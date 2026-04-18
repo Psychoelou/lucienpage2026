@@ -4,12 +4,6 @@ import { getServerSupabase } from '@/lib/supabase'
 
 export const runtime = 'nodejs'
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
-
 export async function POST(request: NextRequest) {
   if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {
     return NextResponse.json({ success: false, error: 'Stripe is not configured' }, { status: 500 })
